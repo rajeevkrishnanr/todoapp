@@ -10,7 +10,11 @@ var methodOverride = require('method-override');
 
 //Config
 
-mongoose.connect('mongodb://rjv:rjv@apollo.modulusmongo.net:27017/jaZ2abyz');
+//mongoose.connect('mongodb://mongo:mongo@apollo.modulusmongo.net:27017/jaZ2abyz');
+//mongoose.connect('mongodb://rjv:rjv@ds047075.mongolab.com:47075/todo_test_rjv');
+mongoose.connect('mongodb://node:nodeuser@mongo.onmodulus.net:27017/uwO3mypu');
+
+
 app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({'extended':'true'}));
@@ -73,7 +77,9 @@ var Todo = mongoose.model('Todo',{
 	
 
 
-
+app.get('*',function(req,res){
+	res.sendfile('./public/index.html');
+});
 
 //Listen
 app.listen(8080);
